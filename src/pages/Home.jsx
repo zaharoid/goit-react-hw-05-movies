@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import * as api from '../api/movies-api';
 import { Filter } from 'components/Filter/Filter';
-import { MoviesList } from 'components/MoviesList.styled';
+// import { MoviesList } from 'components/MoviesList.styled';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 

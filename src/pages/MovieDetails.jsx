@@ -39,6 +39,7 @@ function MovieDetails() {
   return (
     <div>
       <Link to={backLink.current}>Go back</Link>
+      {!movie && loading && <Spinner />}
       {movie && (
         <div>
           <MovieCard>
