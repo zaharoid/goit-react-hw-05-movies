@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import * as api from '../api/movies-api';
 import SearchForm from '../components/SearchForm/SearchForm';
@@ -8,13 +8,17 @@ import { Spinner } from 'components/Loader/Loader';
 import { Message } from 'components/InfoMessage/InfoMessage';
 
 function Movies() {
-  const [query, setQuery] = useState('');
+  // const [query, setQuery] = useState('');
   const [movies, setMovies] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const onTakeQuery = query => {
-    setQuery(query);
+    setSearchParams({ query: query });
   };
+
+  const query = searchParams.get('query') ?? '';
 
   useEffect(() => {
     if (query === '') {
@@ -29,7 +33,6 @@ function Movies() {
         }
         setMovies(data.results);
       })
-      .catch(err => toast.err('Something went wrong, try again ('))
       .finally(setLoading(false));
   }, [query]);
 
