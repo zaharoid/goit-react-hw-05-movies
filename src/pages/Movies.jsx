@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import * as api from '../api/movies-api';
 import SearchForm from '../components/SearchForm/SearchForm';
@@ -13,6 +13,8 @@ function Movies() {
   const [loading, setLoading] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const location = useLocation();
 
   const onTakeQuery = query => {
     setSearchParams({ query: query });
@@ -44,7 +46,9 @@ function Movies() {
         <ul>
           {movies.map(movie => (
             <li key={movie.id}>
-              <Link to={`${movie.id}`}>{movie.title}</Link>
+              <Link to={`${movie.id}`} state={{ from: location }}>
+                {movie.title}
+              </Link>
             </li>
           ))}
         </ul>

@@ -7,7 +7,7 @@ import { Spinner } from './Loader/Loader';
 function Cast() {
   const { movieId } = useParams();
 
-  const [cast, setCast] = useState([]);
+  const [cast, setCast] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -27,7 +27,10 @@ function Cast() {
           {cast.map(({ character, name, profile_path, id }) => (
             <li key={id}>
               <img
-                src={`https://image.tmdb.org/t/p/w300/${profile_path}`}
+                src={
+                  profile_path &&
+                  `https://image.tmdb.org/t/p/w300/${profile_path}`
+                }
                 alt="Actor"
               />
               <p>Name: {name}</p>

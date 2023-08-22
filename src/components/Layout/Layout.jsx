@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import { Spinner } from '../Loader/Loader';
 import { Header, Container, NavList } from './Layout.styled';
 import styled from '@emotion/styled';
 
-const NavLink = styled(Link)`
+const Link = styled(NavLink)`
   text-decoration: none;
   color: #fff;
   padding: 7px 15px;
@@ -12,6 +12,9 @@ const NavLink = styled(Link)`
   border-radius: 10px;
   transition: all 250ms linear;
   &:hover {
+    background-color: #1a2b68;
+  }
+  &.active {
     background-color: #1a2b68;
   }
 `;
@@ -23,10 +26,10 @@ function Layout() {
         <nav>
           <NavList>
             <li>
-              <NavLink to={'/'}>Home</NavLink>
+              <Link to={'/'}>Home</Link>
             </li>
             <li>
-              <NavLink to={'/movies'}>Movies</NavLink>
+              <Link to={'/movies'}>Movies</Link>
             </li>
           </NavList>
         </nav>
